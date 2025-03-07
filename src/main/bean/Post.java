@@ -11,9 +11,13 @@ public class Post {
 	/**
 	 * Data Members
 	 */
-	private long postID, userID; 
-	private String title, description, businessURL, mediaURL;
-	private int clickCount;
+	private long postID;			//Unique ID to Post
+	private long userID; 			//Unique ID of User who created the Post
+	private String title;			//A text String that should describe the post at a glance
+	private String description;		//A block of text that gives greater context to the Post
+	private String businessURL;		//An external, related business link
+	private String mediaURL;		//A link to the featured picture or video media
+	private int clickCount;			//A total count of how many times the Post has been clicked by Users
 	
 	public Post() {
 		// TODO Auto-generated constructor stub

@@ -13,8 +13,10 @@ public class Comment {
 	 * Data Members
 	 */
 	
-	private long commentID, userID, parentID;
-	private String body;
+	private long commentID;			//A unique ID for the Comment
+	private long userID;			//The ID for the User who wrote the Comment
+	private long parentID;			//For replies, the ID of the parent Comment
+	private String body;			//The Comment's text
 	
 	public Comment() {
 		// TODO Auto-generated constructor stub
