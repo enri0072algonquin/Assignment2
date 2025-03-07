@@ -3,7 +3,7 @@
  * 
  * @author Grant Wagner
  */
-package bean;
+package main.bean;
 
 
 public class Post {
