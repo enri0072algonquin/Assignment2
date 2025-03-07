@@ -11,6 +11,10 @@ import main.bean.User;
 
 public class UserDao implements Dao<User> {
 
+	//private static final String USERNAME; //username used to access MySQL database
+	//private static final String PASSWORD; //password for MySQL database
+	//private static final String CONN_STRING = "jdbc:mysql://localhost/[NAME OF DATABASE]"; //Connection string to Database
+	
 	public UserDao() {
 		// TODO Auto-generated constructor stub
 	}
