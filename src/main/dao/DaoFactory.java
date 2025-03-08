@@ -14,11 +14,13 @@ public class DaoFactory {
      * Creates a connection to the MySQL database.
      * 
      * @return Connection to the MySQL database
+     * @throws ClassNotFoundException 
      */
-	public static Connection createConnection() {
+	public static Connection createConnection() throws ClassNotFoundException {
 		//Connect to database
 		Connection conn = null;
 		try {
+			Class.forName("com.mysql.cj.jdbc.Driver"); // Load MySQL driver
 			conn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
