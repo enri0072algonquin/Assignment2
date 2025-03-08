@@ -17,12 +17,12 @@ import main.bean.User;
 
 public class UserDao implements Dao<User> {
 
-	@Override
 	/**
 	 * Returns a list of all Users in the database.
 	 * 
 	 * @return List<Users> 
 	 */
+	@Override
 	public List<User> getAll() {
 		//Initialize Variables
 		Connection conn = null;
@@ -118,13 +118,13 @@ public class UserDao implements Dao<User> {
 		return null;
 	}
 
-	@Override
 	/**
 	 * Updates the information in a User object. Then updates the MySQL database using the new information.
 	 * 
 	 * @param	t		a user whose information is being updated.
 	 * @param	params	the information that is used to update specific attributes.
 	 */
+	@Override
 	public void update(User t, String[] params) {
 		//Set the passed User object's attributes with the passed params
 		//params[0] = username
@@ -178,10 +178,10 @@ public class UserDao implements Dao<User> {
 		
 	}
 
-	@Override
 	/**
 	 * Deletes a user from the MySQL Database.
 	 */
+	@Override
 	public void delete(User t) {
 		//Initialize Connection Variables
 		Connection conn = null;
