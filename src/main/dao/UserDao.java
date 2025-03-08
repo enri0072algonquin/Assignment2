@@ -10,10 +10,6 @@ import java.util.List;
 import main.bean.User;
 
 public class UserDao implements Dao<User> {
-
-	//private static final String USERNAME; //username used to access MySQL database
-	//private static final String PASSWORD; //password for MySQL database
-	//private static final String CONN_STRING = "jdbc:mysql://localhost/[NAME OF DATABASE]"; //Connection string to Database
 	
 	public UserDao() {
 		// TODO Auto-generated constructor stub
@@ -32,9 +28,18 @@ public class UserDao implements Dao<User> {
 	}
 
 	@Override
+	/**
+	 * Updates a specific user's information.
+	 * 
+	 * @param	t		a user whose information is being updated.
+	 * @param	params	the information that is used to update specific attributes.
+	 */
 	public void update(User t, String[] params) {
-		// TODO Auto-generated method stub
-		
+		t.setUserID(Long.parseLong(params[0]));
+		t.setUsername(params[1]);
+		t.setEmail(params[2]);
+		t.setBusinessURL(params[3]);
+		t.setPfpURL(params[4]);
 	}
 
 	@Override

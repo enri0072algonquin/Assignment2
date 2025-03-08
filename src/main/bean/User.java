@@ -58,7 +58,7 @@ public class User implements Serializable {
 		this.userID = userID;
 	}
 	
-	public void setUserID(String username) {
+	public void setUsername(String username) {
 		this.username = username;
 	}
 	
