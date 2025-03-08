@@ -124,10 +124,14 @@ public class UserDao implements Dao<User> {
 			ps.setLong(5, t.getUserID());
 			
 			ps.executeUpdate();
+			conn.commit();
 			
 		} catch (SQLException e) {
 			System.err.println("SQLException occurred: " + e.getMessage());
 		}
+		
+		//close connection
+		DaoFactory.closeConnection(conn);
 	}
 
 	@Override
@@ -138,8 +142,32 @@ public class UserDao implements Dao<User> {
 
 	@Override
 	public void delete(User t) {
-		// TODO Auto-generated method stub
+		//Initialize Connection Variables
+		Connection conn = null;
+		PreparedStatement ps = null;
+				
+		//Create connection to database
+		try {
+			conn = DaoFactory.createConnection();
+			} catch (ClassNotFoundException e) {
+				System.err.println("ClassNotFoundException occurred: " + e.getMessage());
+		}
 		
+		try {
+			//Write SQL query to Update a specific user by userID
+			String query = "DELETE FROM users WHERE userid = ?";
+			ps = conn.prepareStatement(query);
+			ps.setLong(1, t.getUserID());
+			
+			ps.executeUpdate();
+			conn.commit(); 
+			
+		} catch (SQLException e) {
+			System.err.println("SQLException occurred: " + e.getMessage());
+		}
+		
+		//close connection
+		DaoFactory.closeConnection(conn);
 	}
 
 }
