@@ -1,10 +1,11 @@
+package main.form;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class LoginForm1 implements ActionListener {
+public class LoginForm implements ActionListener {
 private static JLabel userLabel;
 private static JTextField userText;
 private static JLabel passwordLabel;

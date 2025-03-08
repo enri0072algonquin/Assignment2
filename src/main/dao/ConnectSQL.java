@@ -1,3 +1,9 @@
+/**
+ * This class facilitates connecting to MySQL database.
+ * 
+ * @author Emilybeth Enriquez
+ */
+package main.dao;
 import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
