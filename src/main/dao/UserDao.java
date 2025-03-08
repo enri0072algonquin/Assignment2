@@ -41,7 +41,7 @@ public class UserDao implements Dao<User> {
 		 * Try creating and executing a SQL statement to get a list of all Users.
 		 */
 		try {
-			stmt = (Statement) conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			stmt = (Statement) conn.createStatement();
 			rs = ((java.sql.Statement) stmt).executeQuery("SELECT * FROM USERS");
 			
 			//Check if the resulting set is not null before proceeding
@@ -76,7 +76,45 @@ public class UserDao implements Dao<User> {
 
 	@Override
 	public User get(long id) {
-		// TODO Auto-generated method stub
+		//Initialize Variables
+		Connection conn = null;
+	    Statement stmt = null;
+	    ResultSet rs = null;
+	    
+	    //Create new User object
+	    User tmp = new User();
+	    tmp.setUserID(id);
+		
+		//Create connection to database
+		try {
+			conn = DaoFactory.createConnection();
+		} catch (ClassNotFoundException e) {
+			System.err.println("ClassNotFoundException occurred: " + e.getMessage());
+		}
+		
+		/**
+		 * Try creating and executing a SQL statement to a specific user.
+		 */
+		try {
+			stmt = (Statement) conn.createStatement();
+			rs = ((java.sql.Statement) stmt).executeQuery("SELECT * FROM USERS");
+			
+			//Check if the resulting set is not null before proceeding
+			if (rs != null) {
+				//Assign all of the User's attributes from the MySQL table
+				tmp.setUsername(rs.getString("username"));
+				tmp.setEmail(rs.getString("email"));
+				tmp.setBusinessURL(rs.getString("businessurl"));
+				tmp.setPfpURL(rs.getString("businessurl"));
+			}
+		} catch (SQLException e) {
+			System.err.println("SQLException occurred: " + e.getMessage());
+		}
+		
+		//close connection
+		DaoFactory.closeConnection(conn);
+		
+		//return the specific user
 		return null;
 	}
 
