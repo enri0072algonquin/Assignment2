@@ -1,3 +1,9 @@
+/**
+ * There should only a single instance of this class. This class manages all of the needed DAO classes.
+ * Manages the main connection to the database.
+ * 
+ * @author Grant Wagner
+ */
 package main.dao;
 
 import java.sql.Connection;

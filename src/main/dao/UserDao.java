@@ -179,12 +179,15 @@ public class UserDao implements Dao<User> {
 	}
 
 	@Override
+	/**
+	 * Deletes a user from the MySQL Database.
+	 */
 	public void delete(User t) {
 		//Initialize Connection Variables
 		Connection conn = null;
 		PreparedStatement ps = null;
 				
-		//Create connection to database
+		//Create connection to database using DaoFactory
 		try {
 			conn = DaoFactory.createConnection();
 			} catch (ClassNotFoundException e) {
