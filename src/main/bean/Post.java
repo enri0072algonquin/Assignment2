@@ -5,9 +5,14 @@
  */
 package main.bean;
 
+import java.io.Serializable;
 
-public class Post {
+public class Post implements Serializable {
 	
+	/**
+	 * Default Serial UID
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * Data Members
 	 */

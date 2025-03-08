@@ -6,8 +6,14 @@
  
 package main.bean;
 
-public class User {
+import java.io.Serializable;
 
+public class User implements Serializable {
+
+	/**
+	 * Default serial UID
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * Data Members
 	 */
