@@ -97,7 +97,7 @@ public class UserDao implements Dao<User> {
 		 */
 		try {
 			stmt = (Statement) conn.createStatement();
-			rs = ((java.sql.Statement) stmt).executeQuery("SELECT * FROM users");
+			rs = ((java.sql.Statement) stmt).executeQuery("SELECT * FROM users WHERE user_id="+id);
 			
 			//Check if the resulting set is not null before proceeding
 			if (rs != null) {

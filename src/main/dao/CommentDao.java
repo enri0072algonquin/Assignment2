@@ -92,7 +92,7 @@ public class CommentDao implements Dao<Comment> {
 		 */
 		try {
 			stmt = (Statement) conn.createStatement();
-			rs = ((java.sql.Statement) stmt).executeQuery("SELECT * FROM comments");
+			rs = ((java.sql.Statement) stmt).executeQuery("SELECT * FROM comments WHERE comment_id=" + id);
 					
 			//Check if the resulting set is not null before proceeding
 			if (rs != null) {
