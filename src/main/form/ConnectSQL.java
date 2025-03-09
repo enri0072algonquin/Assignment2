@@ -3,7 +3,7 @@
  * 
  * @author Emilybeth Enriquez
  */
-package main.dao;
+package main.form;
 import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
