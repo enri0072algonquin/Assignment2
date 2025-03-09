@@ -42,7 +42,7 @@ public class UserDao implements Dao<User> {
 		 */
 		try {
 			stmt = (Statement) conn.createStatement();
-			rs = ((java.sql.Statement) stmt).executeQuery("SELECT * FROM USERS");
+			rs = ((java.sql.Statement) stmt).executeQuery("SELECT * FROM users");
 			
 			//Check if the resulting set is not null before proceeding
 			if (rs != null) {
@@ -97,7 +97,7 @@ public class UserDao implements Dao<User> {
 		 */
 		try {
 			stmt = (Statement) conn.createStatement();
-			rs = ((java.sql.Statement) stmt).executeQuery("SELECT * FROM USERS");
+			rs = ((java.sql.Statement) stmt).executeQuery("SELECT * FROM users");
 			
 			//Check if the resulting set is not null before proceeding
 			if (rs != null) {
@@ -115,7 +115,7 @@ public class UserDao implements Dao<User> {
 		DaoFactory.closeConnection(conn);
 		
 		//return the specific user
-		return null;
+		return tmp;
 	}
 
 	/**

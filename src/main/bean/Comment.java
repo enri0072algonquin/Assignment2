@@ -22,6 +22,7 @@ public class Comment implements Serializable {
 	private long commentID;			//A unique ID for the Comment
 	private long userID;			//The ID for the User who wrote the Comment
 	private long parentID;			//For replies, the ID of the parent Comment
+	private long postID;
 	private String body;			//The Comment's text
 	
 	public Comment() {
@@ -48,6 +49,9 @@ public class Comment implements Serializable {
 		return body;
 	}
 	
+	public long getPostID() {
+		return postID;
+	}
 	/**
 	 * Setters
 	 */
@@ -66,6 +70,10 @@ public class Comment implements Serializable {
 	
 	public void setBody(String body) {
 		this.body = body;
+	}
+
+	public void setPostID(long postID) {
+		this.postID = postID;
 	}
 
 }
