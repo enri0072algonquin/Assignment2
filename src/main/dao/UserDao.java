@@ -53,11 +53,11 @@ public class UserDao implements Dao<User> {
 					User tmp = new User();
 					
 					//Assign all of the User's attributes from the MySQL table
-					tmp.setUserID(Long.parseLong(rs.getString("userid")));
+					tmp.setUserID(Long.parseLong(rs.getString("user_id")));
 					tmp.setUsername(rs.getString("username"));
 					tmp.setEmail(rs.getString("email"));
-					tmp.setBusinessURL(rs.getString("businessurl"));
-					tmp.setPfpURL(rs.getString("businessurl"));
+					tmp.setBusinessURL(rs.getString("business_url"));
+					tmp.setPfpURL(rs.getString("pfp_url"));
 					
 					//add the tmp User to the users ArrayList
 					users.add(tmp);
@@ -104,8 +104,8 @@ public class UserDao implements Dao<User> {
 				//Assign all of the User's attributes from the MySQL table
 				tmp.setUsername(rs.getString("username"));
 				tmp.setEmail(rs.getString("email"));
-				tmp.setBusinessURL(rs.getString("businessurl"));
-				tmp.setPfpURL(rs.getString("pfpurl"));
+				tmp.setBusinessURL(rs.getString("business_url"));
+				tmp.setPfpURL(rs.getString("pfp_url"));
 			}
 		} catch (SQLException e) {
 			System.err.println("SQLException occurred: " + e.getMessage());
@@ -132,10 +132,19 @@ public class UserDao implements Dao<User> {
 		//params[2] = businessURL
 		//params[3] = pfpPicture
 
-		t.setUsername(params[0]);
-		t.setEmail(params[1]);
-		t.setBusinessURL(params[2]);
-		t.setPfpURL(params[3]);
+		//Updates values where not null
+		if (params[0] != null) {
+			t.setUsername(params[0]);
+		}
+		if (params[1] != null) {
+			t.setEmail(params[1]);
+		}
+		if (params[2] != null) {
+			t.setBusinessURL(params[2]);
+		}
+		if (params[3] != null) {
+			t.setPfpURL(params[3]);
+		}
 		
 		//Initialize Connection Variables
 		Connection conn = null;
@@ -150,7 +159,7 @@ public class UserDao implements Dao<User> {
 		
 		try {
 			//Write SQL query to Update a specific user by userID
-			String query = "UPDATE users SET username = ?, email = ?, businessurl = ?, pfpurl = ? WHERE userid = ?";
+			String query = "UPDATE users SET username = ?, email = ?, business_url = ?, pfp_url = ? WHERE user_id = ?";
 			ps = conn.prepareStatement(query);
 			
 			//In query, replace "?" with specific values
@@ -188,7 +197,7 @@ public class UserDao implements Dao<User> {
 				
 			try {
 				//Write SQL query to Insert the user into the Table
-				String query = "INSERT INTO users (userid, email, businessurl, pfpurl) VALUES (?, ?, ?, ?)";
+				String query = "INSERT INTO users (user_id, email, business_url, pfp_url) VALUES (?, ?, ?, ?)";
 				ps = conn.prepareStatement(query);
 				ps.setLong(1, t.getUserID());
 				ps.setString(2, t.getEmail());
@@ -226,7 +235,7 @@ public class UserDao implements Dao<User> {
 		
 		try {
 			//Write SQL query to Update a specific user by userID
-			String query = "DELETE FROM users WHERE userid = ?";
+			String query = "DELETE FROM users WHERE user_id = ?";
 			ps = conn.prepareStatement(query);
 			ps.setLong(1, t.getUserID());
 			
