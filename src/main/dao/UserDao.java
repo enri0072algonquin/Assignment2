@@ -105,7 +105,7 @@ public class UserDao implements Dao<User> {
 				tmp.setUsername(rs.getString("username"));
 				tmp.setEmail(rs.getString("email"));
 				tmp.setBusinessURL(rs.getString("businessurl"));
-				tmp.setPfpURL(rs.getString("businessurl"));
+				tmp.setPfpURL(rs.getString("pfpurl"));
 			}
 		} catch (SQLException e) {
 			System.err.println("SQLException occurred: " + e.getMessage());
@@ -161,6 +161,7 @@ public class UserDao implements Dao<User> {
 			
 			ps.setLong(5, t.getUserID());
 			
+			//Execute Query and commit changes to database
 			ps.executeUpdate();
 			conn.commit();
 			
@@ -174,7 +175,36 @@ public class UserDao implements Dao<User> {
 
 	@Override
 	public void save(User t) {
-		// TODO Auto-generated method stub
+		//Initialize Connection Variables
+		Connection conn = null;
+		PreparedStatement ps = null;
+						
+		//Create connection to database using DaoFactory
+		try {
+			conn = DaoFactory.createConnection();
+			} catch (ClassNotFoundException e) {
+				System.err.println("ClassNotFoundException occurred: " + e.getMessage());
+			}
+				
+			try {
+				//Write SQL query to Insert the user into the Table
+				String query = "INSERT INTO users (userid, email, businessurl, pfpurl) VALUES (?, ?, ?, ?)";
+				ps = conn.prepareStatement(query);
+				ps.setLong(1, t.getUserID());
+				ps.setString(2, t.getEmail());
+				ps.setString(3, t.getBusinessURL());
+				ps.setString(4, t.getPfpURL());
+				
+				//Execute Query and commit changes to database
+				ps.executeUpdate();
+				conn.commit(); 
+					
+				} catch (SQLException e) {
+					System.err.println("SQLException occurred: " + e.getMessage());
+				}
+				
+		//close connection
+		DaoFactory.closeConnection(conn);
 		
 	}
 
@@ -200,6 +230,7 @@ public class UserDao implements Dao<User> {
 			ps = conn.prepareStatement(query);
 			ps.setLong(1, t.getUserID());
 			
+			//Execute Query and commit the update to the database.
 			ps.executeUpdate();
 			conn.commit(); 
 			
